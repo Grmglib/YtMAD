@@ -106,8 +106,8 @@ namespace YtMAD
                 var streamDto = new StreamDTO()
                 {
                     Type = stream.Container.ToString(),
-                    Size = stream.Size.MegaBytes,
-                    Bitrate = stream.Bitrate.GigaBitsPerSecond,
+                    Size = Math.Round( stream.Size.MegaBytes,2),
+                    Bitrate = stream.Bitrate.BitsPerSecond,
                     Url = stream.Url
                 };
                 streamList.Add(streamDto);
@@ -119,7 +119,8 @@ namespace YtMAD
                 Author = author,
                 Duration = duration,
                 Thumbnail = thumbUrl,
-                Url = videoUrl
+                Url = videoUrl,
+                Quality = streamList
             };
 
             return videoDto;
