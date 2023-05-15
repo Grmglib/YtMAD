@@ -1,0 +1,70 @@
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.csproj.AssemblyReference.cache
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.AssemblyInfoInputs.cache
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.AssemblyInfo.cs
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.csproj.CoreCompileInputs.cache
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\appsettings.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YtMAD.exe
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YtMAD.deps.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YtMAD.runtimeconfig.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YtMAD.pdb
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\AngleSharp.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\bin\Debug\net7.0\YoutubeExplode.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.YtMAD.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.build.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\scopedcss\bundle\YtMAD.styles.css
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.csproj.CopyComplete
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\refint\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.pdb
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\YtMAD.genruntimeconfig.cache
+C:\Users\gabriel\Documents\GitHub\Sharp Bot\YtMAD\obj\Debug\net7.0\ref\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\appsettings.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YtMAD.exe
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YtMAD.deps.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YtMAD.runtimeconfig.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YtMAD.pdb
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\AngleSharp.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\Microsoft.OpenApi.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\bin\Debug\net7.0\YoutubeExplode.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.csproj.AssemblyReference.cache
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.AssemblyInfoInputs.cache
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.AssemblyInfo.cs
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.csproj.CoreCompileInputs.cache
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.YtMAD.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.build.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.YtMAD.props
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\scopedcss\bundle\YtMAD.styles.css
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.csproj.CopyComplete
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\refint\YtMAD.dll
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.pdb
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\YtMAD.genruntimeconfig.cache
+C:\Users\gabriel\Documents\GitHub\YtMAD\obj\Debug\net7.0\ref\YtMAD.dll
