@@ -1,11 +1,14 @@
-﻿using YoutubeExplode;
+﻿using System.Collections.Immutable;
+using YoutubeExplode;
 using YoutubeExplode.Common;
 using YoutubeExplode.Search;
+using YoutubeExplode.Videos.Streams;
 
 namespace YtMAD
 {
     public class YoutubeRequests
     {
+        #region Search Video
         public static async Task<List<VideoDTO>> VideoSearch(string query)
         {
             var youtube = new YoutubeClient();
@@ -70,9 +73,11 @@ namespace YtMAD
 
             return videoList;
         }
-
+        #endregion
+        #region Video Info
         public static async Task<VideoDTO> VideoInfo(string url)
         {
+            List<StreamDTO> streamList = new List<StreamDTO>();
             int area = 0;
             Thumbnail thumbnail = null;
             var youtube = new YoutubeClient();
@@ -80,6 +85,8 @@ namespace YtMAD
             // You can specify either the video URL or its ID
             var videoUrl = url;
             var video = await youtube.Videos.GetAsync(videoUrl);
+            var qualities = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
+            var streams = qualities.Streams;
             var thumbList = video.Thumbnails;
             foreach (var thumb in thumbList)
             {
@@ -90,25 +97,33 @@ namespace YtMAD
                 }
             }
             var id = video.Id.Value;
-            var date = video.UploadDate;
-            var description = video.Description;
             var title = video.Title;
             var author = video.Author.ChannelTitle;
             var duration = video.Duration.Value;
             var thumbUrl = thumbnail.Url;
-            var videodto = new VideoDTO()
+            foreach(var stream in streams)
+            {
+                var streamDto = new StreamDTO()
+                {
+                    Type = stream.Container.ToString(),
+                    Size = stream.Size.MegaBytes,
+                    Bitrate = stream.Bitrate.GigaBitsPerSecond,
+                    Url = stream.Url
+                };
+                streamList.Add(streamDto);
+            }
+            var videoDto = new VideoDTO()
             {
                 Title = title,
                 Id = id,
-                UploadDate = date,
-                Description = description,
                 Author = author,
                 Duration = duration,
                 Thumbnail = thumbUrl,
                 Url = videoUrl
             };
 
-            return videodto;
+            return videoDto;
         }
+        #endregion
     }
 }
