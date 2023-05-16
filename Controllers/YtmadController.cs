@@ -45,7 +45,7 @@ namespace YtMAD.Controllers
             
         }
         [HttpGet("VideoDownload")]
-        public async Task<IActionResult> GetVideoDownlaod(string url,string container,string path,double? resolution, double? bitrate)
+        public async Task<IActionResult> GetVideoDownlaod(string url,string container,string path,double? resolution, string? bitrate)
         {
            var result = await YoutubeRequests.VideoDownload(url, container,path,resolution, bitrate);
             if(result != null)
@@ -59,7 +59,7 @@ namespace YtMAD.Controllers
         }  
         
         [HttpGet("StreamDownload")]
-        public async Task<IActionResult> GetStreamDownlaod(string url,string container,double? resolution, double? bitrate)
+        public async Task<IActionResult> GetStreamDownlaod(string url,string container,double? resolution, string? bitrate)
         {
            var result = await YoutubeRequests.StreamDownload(url, container, resolution, bitrate);
            return Ok(result);

@@ -23,6 +23,6 @@ public class StreamDTO
     public double Size { get; set; }
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public double Resolution { get; set; }
-    public double Bitrate { get; set; }
+    public string Bitrate { get; set; }
     public string Url { get; set; }
 }

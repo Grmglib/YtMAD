@@ -104,7 +104,7 @@ namespace YtMAD
                     Type = "Audio",
                     Container = stream.Container.ToString(),
                     Size = Math.Round(stream.Size.MegaBytes, 2),
-                    Bitrate = Math.Round(stream.Bitrate.KiloBitsPerSecond, 4),
+                    Bitrate = stream.Bitrate.ToString(),
                     Url = stream.Url
                 };
                 streamList.Add(streamDto);
@@ -117,7 +117,7 @@ namespace YtMAD
                     Container = stream.Container.ToString(),
                     Size = Math.Round(stream.Size.MegaBytes, 2),
                     Resolution = stream.VideoResolution.Height,
-                    Bitrate = Math.Round(stream.Bitrate.KiloBitsPerSecond, 4),
+                    Bitrate = stream.Bitrate.ToString(),
                     Url = stream.Url
                 };
                 streamList.Add(streamDto);
@@ -130,7 +130,7 @@ namespace YtMAD
                     Container = stream.Container.ToString(),
                     Size = Math.Round(stream.Size.MegaBytes, 2),
                     Resolution = stream.VideoResolution.Height,
-                    Bitrate = Math.Round(stream.Bitrate.KiloBitsPerSecond, 4),
+                    Bitrate = stream.Bitrate.ToString(),
                     Url = stream.Url
                 };
                 streamList.Add(streamDto);
@@ -150,7 +150,7 @@ namespace YtMAD
             return videoDto;
         }
         #endregion
-        public static async Task<string> VideoDownload(string url, string container,string filePath, double? resolution, double? bitrate)
+        public static async Task<string> VideoDownload(string url, string container,string filePath, double? resolution, string? bitrate)
         {
             var youtube = new YoutubeClient();
             var video = await youtube.Videos.GetAsync(url);
@@ -163,7 +163,7 @@ namespace YtMAD
             }
             else if(bitrate != null)
             {
-                var streamInfo = streamManifest.GetAudioOnlyStreams().Where(s => s.Container.Name == container).Where(s => Math.Round(s.Bitrate.KiloBitsPerSecond, 4) == bitrate).First();
+                var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
                 await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
                 return "Track Downloaded";
             }
@@ -174,7 +174,7 @@ namespace YtMAD
            
             
         }
-        public static async Task<Stream> StreamDownload(string url,string container,double? resolution,double? bitrate)
+        public static async Task<Stream> StreamDownload(string url,string container,double? resolution,string? bitrate)
         {
             var youtube = new YoutubeClient();
             var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
@@ -186,7 +186,7 @@ namespace YtMAD
             }
             else if(bitrate != null)
             {
-                var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => Math.Round(s.Bitrate.KiloBitsPerSecond, 4) == bitrate).First();
+                var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
                 var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
                 return stream;
             }
