@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabriel\\Documents\\GitHub\\YtMAD\\YtMAD.csproj": {}
+    "D:\\repos\\YtMAD\\YtMAD.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabriel\\Documents\\GitHub\\YtMAD\\YtMAD.csproj": {
+    "D:\\repos\\YtMAD\\YtMAD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabriel\\Documents\\GitHub\\YtMAD\\YtMAD.csproj",
+        "projectUniqueName": "D:\\repos\\YtMAD\\YtMAD.csproj",
         "projectName": "YtMAD",
-        "projectPath": "C:\\Users\\gabriel\\Documents\\GitHub\\YtMAD\\YtMAD.csproj",
-        "packagesPath": "C:\\Users\\gabriel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabriel\\Documents\\GitHub\\YtMAD\\obj\\",
+        "projectPath": "D:\\repos\\YtMAD\\YtMAD.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "D:\\repos\\YtMAD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gabriel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -50,7 +51,7 @@
             },
             "YoutubeExplode": {
               "target": "Package",
-              "version": "[6.2.14, )"
+              "version": "[6.2.15, )"
             }
           },
           "imports": [
@@ -72,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }
