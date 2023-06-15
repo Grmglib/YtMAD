@@ -361,3 +361,14 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+.vs/ProjectEvaluation/ytmad.metadata.v6.1
+.vs/ProjectEvaluation/ytmad.projects.v6.1
+.vs/YtMAD/DesignTimeBuild/.dtbcache.v2
+.vs/YtMAD/FileContentIndex/02cbdb8a-855e-40ba-bd76-558b9a941c7a.vsidx
+.vs/YtMAD/v17/.futdcache.v2
+.vs/YtMAD/v17/.suo
+bin/Debug/net7.0/YtMAD.pdb
+obj/Debug/net7.0/YtMAD.assets.cache
+obj/Debug/net7.0/YtMAD.csproj.AssemblyReference.cache
+obj/Debug/net7.0/YtMAD.pdb
+obj/project.assets.json
