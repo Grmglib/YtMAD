@@ -16,60 +16,68 @@ namespace YtMAD
         {
             var youtube = new YoutubeClient();
             List<VideoDTO> videoList = new List<VideoDTO>();
-            await foreach (var result in youtube.Search.GetResultsAsync(query))
+            try
             {
-                if (videoList.Count < 20)
+                await foreach (var result in youtube.Search.GetResultsAsync(query))
                 {
-                    // Use pattern matching to handle different results (videos, playlists, channels)
-                    switch (result)
+                    if (videoList.Count < 20)
                     {
-                        case VideoSearchResult video:
-                            {
-                                Thumbnail thumbnail = null;
-                                int area = 0;
-                                var thumbList = video.Thumbnails;
-                                foreach (var thumb in thumbList)
+                        // Use pattern matching to handle different results (videos, playlists, channels)
+                        switch (result)
+                        {
+                            case VideoSearchResult video:
                                 {
-                                    if (thumb.Resolution.Area > area)
+                                    Thumbnail thumbnail = null;
+                                    int area = 0;
+                                    var thumbList = video.Thumbnails;
+                                    foreach (var thumb in thumbList)
                                     {
-                                        area = thumb.Resolution.Area;
-                                        thumbnail = thumb;
+                                        if (thumb.Resolution.Area > area)
+                                        {
+                                            area = thumb.Resolution.Area;
+                                            thumbnail = thumb;
+                                        }
                                     }
+                                    var videodto = new VideoDTO()
+                                    {
+                                        Title = video.Title,
+                                        Id = video.Id,
+                                        Author = video.Author.ChannelTitle,
+                                        Duration = video.Duration.Value,
+                                        Thumbnail = thumbnail.Url,
+                                        Url = video.Url
+                                    };
+                                    videoList.Add(videodto);
+                                    break;
                                 }
-                                var videodto = new VideoDTO()
+                            case PlaylistSearchResult playlist:
                                 {
-                                    Title = video.Title,
-                                    Id = video.Id,
-                                    Author = video.Author.ChannelTitle,
-                                    Duration = video.Duration.Value,
-                                    Thumbnail = thumbnail.Url,
-                                    Url = video.Url
-                                };
-                                videoList.Add(videodto);
-                                break;
-                            }
-                        case PlaylistSearchResult playlist:
-                            {
-                                //var id = playlist.Id;
-                                //var title = playlist.Title;
-                                //videoList.Add(title);
-                                break;
-                            }
-                        case ChannelSearchResult channel:
-                            {
-                                //var id = channel.Id;
-                                //var title = channel.Title;
-                                //videoList.Add(title);
-                                break;
-                            }
+                                    //var id = playlist.Id;
+                                    //var title = playlist.Title;
+                                    //videoList.Add(title);
+                                    break;
+                                }
+                            case ChannelSearchResult channel:
+                                {
+                                    //var id = channel.Id;
+                                    //var title = channel.Title;
+                                    //videoList.Add(title);
+                                    break;
+                                }
+                        }
                     }
+                    else { break; }
+
                 }
-                else { break; }
 
+                return videoList;
             }
-
-            return videoList;
-        }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            }
+            
         #endregion
         #region Video Info
         public static async Task<VideoDTO> VideoInfo(string url)
@@ -81,120 +89,149 @@ namespace YtMAD
 
             // You can specify either the video URL or its ID
             var videoUrl = url;
-            var video = await youtube.Videos.GetAsync(videoUrl);
-            var manifests = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
-            var audioStreams = manifests.GetAudioOnlyStreams();
-            var videoStreams = manifests.GetVideoOnlyStreams();
-            var mixedStreams = manifests.GetMuxedStreams();
-            var thumbList = video.Thumbnails;
-
-            foreach (var thumb in thumbList)
+            try
             {
-                if (thumb.Resolution.Area > area)
+                var video = await youtube.Videos.GetAsync(videoUrl);
+                var manifests = await youtube.Videos.Streams.GetManifestAsync(videoUrl);
+                var audioStreams = manifests.GetAudioOnlyStreams();
+                var videoStreams = manifests.GetVideoOnlyStreams();
+                var mixedStreams = manifests.GetMuxedStreams();
+                var thumbList = video.Thumbnails;
+
+
+                foreach (var thumb in thumbList)
                 {
-                    area = thumb.Resolution.Area;
-                    thumbnail = thumb;
+                    if (thumb.Resolution.Area > area)
+                    {
+                        area = thumb.Resolution.Area;
+                        thumbnail = thumb;
+                    }
                 }
-            }
 
-            foreach (var stream in audioStreams)
-            {
-                var streamDto = new StreamDTO()
+                foreach (var stream in audioStreams)
                 {
-                    Type = "Audio",
-                    Container = stream.Container.ToString(),
-                    Size = Math.Round(stream.Size.MegaBytes, 2),
-                    Bitrate = stream.Bitrate.ToString(),
-                    Url = stream.Url
-                };
-                streamList.Add(streamDto);
-            }
-            foreach (var stream in videoStreams)
-            {
-                var streamDto = new StreamDTO()
+                    var streamDto = new StreamDTO()
+                    {
+                        Type = "Audio",
+                        Container = stream.Container.ToString(),
+                        Size = Math.Round(stream.Size.MegaBytes, 2),
+                        Bitrate = stream.Bitrate.ToString(),
+                        Url = stream.Url
+                    };
+                    streamList.Add(streamDto);
+                }
+                foreach (var stream in videoStreams)
                 {
-                    Type = "Video",
-                    Container = stream.Container.ToString(),
-                    Size = Math.Round(stream.Size.MegaBytes, 2),
-                    Resolution = stream.VideoResolution.Height,
-                    Bitrate = stream.Bitrate.ToString(),
-                    Url = stream.Url
-                };
-                streamList.Add(streamDto);
-            }
-            foreach (var stream in mixedStreams)
-            {
-                var streamDto = new StreamDTO()
+                    var streamDto = new StreamDTO()
+                    {
+                        Type = "Video",
+                        Container = stream.Container.ToString(),
+                        Size = Math.Round(stream.Size.MegaBytes, 2),
+                        Resolution = stream.VideoResolution.Height,
+                        Bitrate = stream.Bitrate.ToString(),
+                        Url = stream.Url
+                    };
+                    streamList.Add(streamDto);
+                }
+                foreach (var stream in mixedStreams)
                 {
-                    Type = "Mixed",
-                    Container = stream.Container.ToString(),
-                    Size = Math.Round(stream.Size.MegaBytes, 2),
-                    Resolution = stream.VideoResolution.Height,
-                    Bitrate = stream.Bitrate.ToString(),
-                    Url = stream.Url
+                    var streamDto = new StreamDTO()
+                    {
+                        Type = "Mixed",
+                        Container = stream.Container.ToString(),
+                        Size = Math.Round(stream.Size.MegaBytes, 2),
+                        Resolution = stream.VideoResolution.Height,
+                        Bitrate = stream.Bitrate.ToString(),
+                        Url = stream.Url
+                    };
+                    streamList.Add(streamDto);
+                }
+                var streamSorted = streamList.OrderBy(StreamDTO => StreamDTO.Size).ToList();
+                var videoDto = new VideoDTO()
+                {
+                    Title = video.Title,
+                    Id = video.Id.Value,
+                    Author = video.Author.ChannelTitle,
+                    Duration = video.Duration.Value,
+                    Thumbnail = thumbnail.Url,
+                    Url = video.Url,
+                    Quality = streamSorted
                 };
-                streamList.Add(streamDto);
-            }
-            var streamSorted = streamList.OrderBy(StreamDTO => StreamDTO.Size).ToList();
-            var videoDto = new VideoDTO()
-            {
-                Title = video.Title,
-                Id = video.Id.Value,
-                Author = video.Author.ChannelTitle,
-                Duration = video.Duration.Value,
-                Thumbnail = thumbnail.Url,
-                Url = video.Url,
-                Quality = streamSorted
-            };
 
-            return videoDto;
+                return videoDto;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
         #endregion
+        #region Video Download
         public static async Task<string> VideoDownload(string url, string container,string filePath, double? resolution, string? bitrate)
         {
             var youtube = new YoutubeClient();
-            var video = await youtube.Videos.GetAsync(url);
-            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
-            if (resolution != null)
+            try
             {
-                var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => s.VideoResolution.Height == resolution).First();
-                await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
-                return "Video Downloaded";
+                var video = await youtube.Videos.GetAsync(url);
+                var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
+                if (resolution != null)
+                {
+                    var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => s.VideoResolution.Height == resolution).First();
+                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
+                    return "Video Downloaded";
+                }
+                else if (bitrate != null)
+                {
+                    var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
+                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
+                    return "Track Downloaded";
+                }
+                else
+                {
+                    throw new Exception("Quality not selected");
+                }
+
+
             }
-            else if(bitrate != null)
+            catch (Exception ex)
             {
-                var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
-                await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
-                return "Track Downloaded";
+                throw new Exception(ex.Message);
             }
-            else
-            {
-                return null;
-            }
-           
             
         }
+        #endregion
+        #region Stream Download
         public static async Task<Stream> StreamDownload(string url,string container,double? resolution,string? bitrate)
         {
             var youtube = new YoutubeClient();
-            var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
-            if(resolution != null)
+            try
             {
-                var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => s.VideoResolution.Height == resolution).First();
-                var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
-                return stream;
+                var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
+                if (resolution != null)
+                {
+                    var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => s.VideoResolution.Height == resolution).First();
+                    var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
+                    return stream;
+                }
+                else if (bitrate != null)
+                {
+                    var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
+                    var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
+                    return stream;
+                }
+                else
+                {
+                    throw new Exception("Quality not selected");
+                }
             }
-            else if(bitrate != null)
+            catch(Exception ex)
             {
-                var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
-                var stream = await youtube.Videos.Streams.GetAsync(streamInfo);
-                return stream;
+                throw new Exception(ex.Message);
             }
-            else
-            {
-                return null;
-            }
+                
+            
             
         }
+        #endregion
     }
 }
