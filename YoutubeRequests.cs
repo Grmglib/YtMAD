@@ -174,16 +174,17 @@ namespace YtMAD
             {
                 var video = await youtube.Videos.GetAsync(url);
                 var streamManifest = await youtube.Videos.Streams.GetManifestAsync(url);
+                string fileName = string.Concat(video.Title.Split(Path.GetInvalidFileNameChars()));
                 if (resolution != null)
                 {
                     var streamInfo = streamManifest.GetVideoStreams().Where(s => s.Container.Name == container).Where(s => s.VideoResolution.Height == resolution).First();
-                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
+                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{fileName}.{streamInfo.Container}");
                     return "Video Downloaded";
                 }
                 else if (bitrate != null)
                 {
                     var streamInfo = streamManifest.Streams.Where(s => s.Container.Name == container).Where(s => s.Bitrate.ToString() == bitrate).First();
-                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{video.Title}.{streamInfo.Container}");
+                    await youtube.Videos.Streams.DownloadAsync(streamInfo, $"{filePath}/{fileName}.{streamInfo.Container}");
                     return "Track Downloaded";
                 }
                 else
